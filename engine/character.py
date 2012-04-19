@@ -53,7 +53,7 @@ class Character(entity.MovingObject):
         # unlike the null movement in Source or the "preferred direction" that's
         # present in a lot of indie games (aigh)
         # rewrite acceptable if it makes it less shitload of code :[
-        apply_friction = False
+        old_hspeed = self.hspeed;
         if player.left and not player.last_left:    # left  movement
             self.desired_direction = -1
         elif player.last_left and not player.left:  # right movement
@@ -79,7 +79,7 @@ class Character(entity.MovingObject):
             self.hspeed += self.base_acceleration * self.run_power * frametime
         self.hspeed *= self.friction  ** frametime
         
-        if abs(self.hspeed) < 10:
+        if abs(self.hspeed) < 10 and abs(old_hspeed) > abs(self.hspeed):
             self.hspeed = 0
 
         if player.up and not player.old_up:
