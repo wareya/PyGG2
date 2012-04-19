@@ -54,19 +54,25 @@ class Character(entity.MovingObject):
         # present in a lot of indie games (aigh)
         # rewrite acceptable if it makes it less shitload of code :[
         old_hspeed = self.hspeed;
-        if player.left and not player.last_left:    # left  movement
+                                                    # left  movement
+        if player.left and not player.last_left:
             self.desired_direction = -1
-        elif player.last_left and not player.left:  # right movement
+                                                    # right movement
+        elif player.last_left and not player.left:
             if player.right:
                 self.desired_direction =  1
-            else:                                   # null  movement
+                                                    # null  movement
+            else:
                 self.desired_direction =  0
-        if player.right and not player.last_right:  # right movement
+                                                    # right movement
+        if player.right and not player.last_right:
             self.desired_direction =  1
-        elif player.last_right and not player.right:# left  movement
+                                                    # left  movement
+        elif player.last_right and not player.right:
             if player.left:
                 self.desired_direction = -1
-            else:                                   # null  movement
+                                                    # null  movement
+            else:
                 self.desired_direction =  0
             
         if self.desired_direction == -1:            # left
